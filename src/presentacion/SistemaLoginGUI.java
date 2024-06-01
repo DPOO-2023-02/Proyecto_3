@@ -1,7 +1,6 @@
 package presentacion;
 
 import javax.swing.*;
-
 import piezas.Inventario;
 import piezas.Pieza;
 import usuarios.Administrador;
@@ -32,7 +31,7 @@ public class SistemaLoginGUI extends JFrame {
         setLayout(new BorderLayout());
 
         // Panel para la imagen en el centro
-        JLabel imageLabel = new JLabel(new ImageIcon("casino.jpg"));
+        JLabel imageLabel = new JLabel(new ImageIcon("C:\\Users\\USER\\Documents\\TODO\\universidad\\3er semestre\\DPO\\Proyecto_3NOMAS\\imagenes\\subasta.png"));
         add(imageLabel, BorderLayout.CENTER);
 
         // Panel para los botones en la parte inferior
@@ -269,7 +268,7 @@ public class SistemaLoginGUI extends JFrame {
 
                 switch (tipo) {
                     case 1:
-                        Administrador.crearPintura(new Scanner(""), titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio);
+                    	Administrador.crearPintura(titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio, ubicacion, ubicacion, ubicacion);
                         break;
                     case 2:
                         Administrador.crearEscultura(new Scanner(""), titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio);
@@ -319,7 +318,7 @@ public class SistemaLoginGUI extends JFrame {
     private void mostrarEliminarPieza() {
         String titulo = JOptionPane.showInputDialog("Ingrese el título de la pieza que desea eliminar:");
         if (titulo != null && !titulo.isEmpty()) {
-            Administrador.eliminarPieza();
+            Administrador.eliminarPieza(titulo);
             JOptionPane.showMessageDialog(null, "La pieza con título '" + titulo + "' ha sido eliminada.");
         } else {
             JOptionPane.showMessageDialog(null, "Título no válido.", "Error", JOptionPane.ERROR_MESSAGE);

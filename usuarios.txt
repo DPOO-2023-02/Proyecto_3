@@ -1,6 +1,7 @@
 pruebas,123,comprador,10000.0
+Galería Moderna,123,comprador,100.0
+Galeria,123,comprador,123.0
 andresito,123,comprador,10000.0
 santiago,123,administrador,123123.0
 juanito,123,administrador,100.0
-Galeria,123,comprador,123.0
-Galería Moderna,123,comprador,100.0
+peperepe,123,administrador,100
