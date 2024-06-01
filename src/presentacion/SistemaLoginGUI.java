@@ -2,8 +2,9 @@ package presentacion;
 
 import javax.swing.*;
 
+import piezas.Inventario;
+import piezas.Pieza;
 import usuarios.Administrador;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,6 +12,7 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.List;
 
 public class SistemaLoginGUI extends JFrame {
     private static Map<String, String[]> usuarios = new HashMap<>();
@@ -176,38 +178,35 @@ public class SistemaLoginGUI extends JFrame {
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Administrador.agregarPieza(null);
+                mostrarAgregarPieza();
             }
         });
 
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Administrador.eliminarPieza();
+                mostrarEliminarPieza();
             }
         });
 
         consultButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Administrador.consultarInventario();
+                mostrarConsultarInventario();
             }
         });
 
         historyButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Administrador.Verhistorial_clientes();
+                mostrarVerHistorialClientes();
             }
         });
 
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String titulo = JOptionPane.showInputDialog(adminFrame, "Ingrese el título de la pieza a buscar:");
-                if (titulo != null) {
-                    Administrador.buscarPiezaPorTitulo(titulo);
-                }
+                mostrarBuscarPiezaPorTitulo();
             }
         });
 
@@ -229,43 +228,209 @@ public class SistemaLoginGUI extends JFrame {
         adminFrame.setVisible(true);
     }
 
-    private static void cargarUsuarios() {
-        try (Scanner fileScanner = new Scanner(new File(ARCHIVO_USUARIOS))) {
-            while (fileScanner.hasNextLine()) {
-                String linea = fileScanner.nextLine();
+    private void mostrarAgregarPieza() {
+        JFrame agregarPiezaFrame = new JFrame("Agregar Pieza");
+        agregarPiezaFrame.setSize(400, 400);
+        agregarPiezaFrame.setLocationRelativeTo(null);
+        agregarPiezaFrame.setLayout(new GridLayout(9, 2));
+
+        JLabel tituloLabel = new JLabel("Título:");
+        JTextField tituloField = new JTextField();
+        JLabel anioLabel = new JLabel("Año:");
+        JTextField anioField = new JTextField();
+        JLabel autoresLabel = new JLabel("Autores:");
+        JTextField autoresField = new JTextField();
+        JLabel lugarCreacionLabel = new JLabel("Lugar de Creación:");
+        JTextField lugarCreacionField = new JTextField();
+        JLabel disponibilidadLabel = new JLabel("Disponibilidad (true/false):");
+        JTextField disponibilidadField = new JTextField();
+        JLabel propietarioLabel = new JLabel("Propietario Actual:");
+        JTextField propietarioField = new JTextField();
+        JLabel ubicacionLabel = new JLabel("Ubicación Actual:");
+        JTextField ubicacionField = new JTextField();
+        JLabel precioLabel = new JLabel("Precio:");
+        JTextField precioField = new JTextField();
+        JLabel tipoLabel = new JLabel("Tipo de Pieza (1-5):");
+        JTextField tipoField = new JTextField();
+        JButton agregarButton = new JButton("Agregar");
+
+        agregarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String titulo = tituloField.getText();
+                String anio = anioField.getText();
+                String autores = autoresField.getText();
+                String lugarCreacion = lugarCreacionField.getText();
+                boolean disponibilidad = Boolean.parseBoolean(disponibilidadField.getText());
+                String propietario = propietarioField.getText();
+                String ubicacion = ubicacionField.getText();
+                double precio = Double.parseDouble(precioField.getText());
+                int tipo = Integer.parseInt(tipoField.getText());
+
+                switch (tipo) {
+                    case 1:
+                        Administrador.crearPintura(new Scanner(""), titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio);
+                        break;
+                    case 2:
+                        Administrador.crearEscultura(new Scanner(""), titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio);
+                        break;
+                    case 3:
+                        Administrador.crearVideo(new Scanner(""), titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio);
+                        break;
+                    case 4:
+                        Administrador.crearFotografia(new Scanner(""), titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio);
+                        break;
+                    case 5:
+                        Administrador.crearImpresion(new Scanner(""), titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio);
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(agregarPiezaFrame, "Tipo de pieza no válido.", "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                }
+                JOptionPane.showMessageDialog(agregarPiezaFrame, "Pieza agregada exitosamente al inventario.");
+                agregarPiezaFrame.dispose();
+            }
+        });
+
+        agregarPiezaFrame.add(tituloLabel);
+        agregarPiezaFrame.add(tituloField);
+        agregarPiezaFrame.add(anioLabel);
+        agregarPiezaFrame.add(anioField);
+        agregarPiezaFrame.add(autoresLabel);
+        agregarPiezaFrame.add(autoresField);
+        agregarPiezaFrame.add(lugarCreacionLabel);
+        agregarPiezaFrame.add(lugarCreacionField);
+        agregarPiezaFrame.add(disponibilidadLabel);
+        agregarPiezaFrame.add(disponibilidadField);
+        agregarPiezaFrame.add(propietarioLabel);
+        agregarPiezaFrame.add(propietarioField);
+        agregarPiezaFrame.add(ubicacionLabel);
+        agregarPiezaFrame.add(ubicacionField);
+        agregarPiezaFrame.add(precioLabel);
+        agregarPiezaFrame.add(precioField);
+        agregarPiezaFrame.add(tipoLabel);
+        agregarPiezaFrame.add(tipoField);
+        agregarPiezaFrame.add(new JLabel());
+        agregarPiezaFrame.add(agregarButton);
+
+        agregarPiezaFrame.setVisible(true);
+    }
+
+    private void mostrarEliminarPieza() {
+        String titulo = JOptionPane.showInputDialog("Ingrese el título de la pieza que desea eliminar:");
+        if (titulo != null && !titulo.isEmpty()) {
+            Administrador.eliminarPieza();
+            JOptionPane.showMessageDialog(null, "La pieza con título '" + titulo + "' ha sido eliminada.");
+        } else {
+            JOptionPane.showMessageDialog(null, "Título no válido.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void mostrarConsultarInventario() {
+        JFrame inventarioFrame = new JFrame("Consultar Inventario");
+        inventarioFrame.setSize(500, 500);
+        inventarioFrame.setLocationRelativeTo(null);
+
+        JTextArea inventarioArea = new JTextArea(20, 40);
+        inventarioArea.setEditable(false);
+        JScrollPane scrollPane = new JScrollPane(inventarioArea);
+        inventarioFrame.add(scrollPane);
+
+        List<Pieza> piezas = Inventario.consultarInventario();
+        if (piezas.isEmpty()) {
+            inventarioArea.setText("El inventario está vacío.");
+        } else {
+            StringBuilder inventarioTexto = new StringBuilder("Inventario de piezas:\n");
+            for (Pieza pieza : piezas) {
+                inventarioTexto.append("===================\n")
+                        .append("Título: ").append(pieza.getTitulo()).append("\n")
+                        .append("Año: ").append(pieza.getAnio()).append("\n")
+                        .append("Autores: ").append(pieza.getAutores()).append("\n")
+                        .append("Lugar de creación: ").append(pieza.getLugarCreacion()).append("\n")
+                        .append("Disponibilidad de venta: ").append(pieza.isDisponibilidadVenta() ? "Disponible" : "No disponible").append("\n")
+                        .append("Propietario actual: ").append(pieza.getPropietarioActual()).append("\n")
+                        .append("Ubicación actual: ").append(pieza.getUbicacionActual()).append("\n")
+                        .append("Precio: $").append(pieza.getPrecio()).append("\n")
+                        .append("Subastable: ").append(pieza.isSubastable() ? "Sí" : "No").append("\n");
+            }
+            inventarioArea.setText(inventarioTexto.toString());
+        }
+
+        inventarioFrame.setVisible(true);
+    }
+
+    private void mostrarVerHistorialClientes() {
+        Administrador.Verhistorial_clientes();
+        JOptionPane.showMessageDialog(null, "No hay nada ya que no hay ningun usuario con una nueva adquisición.");
+    }
+
+    private void mostrarBuscarPiezaPorTitulo() {
+        String titulo = JOptionPane.showInputDialog("Ingrese el título de la pieza que desea buscar:");
+        if (titulo != null && !titulo.isEmpty()) {
+            Administrador.buscarPiezaPorTitulo(titulo);
+            // Aquí debes agregar el código para mostrar la pieza encontrada en un cuadro de diálogo.
+            // Por ejemplo:
+            Pieza pieza = Administrador.buscarPiezaPorTitulo(titulo);
+            if (pieza != null) {
+                JOptionPane.showMessageDialog(null, "Pieza encontrada:\n" +
+                        "Título: " + pieza.getTitulo() + "\n" +
+                        "Año: " + pieza.getAnio() + "\n" +
+                        "Autores: " + pieza.getAutores() + "\n" +
+                        "Lugar de creación: " + pieza.getLugarCreacion() + "\n" +
+                        "Disponibilidad de venta: " + (pieza.isDisponibilidadVenta() ? "Disponible" : "No disponible") + "\n" +
+                        "Propietario actual: " + pieza.getPropietarioActual() + "\n" +
+                        "Ubicación actual: " + pieza.getUbicacionActual() + "\n" +
+                        "Precio: $" + pieza.getPrecio() + "\n" +
+                        "Subastable: " + (pieza.isSubastable() ? "Sí" : "No"));
+            } else {
+                JOptionPane.showMessageDialog(null, "Pieza no encontrada.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Título no válido.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void crearArchivoTxt(String nombreArchivo) {
+        try {
+            File archivo = new File(nombreArchivo);
+            if (!archivo.exists()) {
+                archivo.createNewFile();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void cargarUsuarios() {
+        try (BufferedReader reader = new BufferedReader(new FileReader(ARCHIVO_USUARIOS))) {
+            String linea;
+            while ((linea = reader.readLine()) != null) {
                 String[] partes = linea.split(",");
-                if (partes.length >= 4) { // corregido para incluir el campo de dinero
-                    usuarios.put(partes[0], new String[]{partes[1], partes[2], partes[3]});
-                } else {
-                    System.err.println("Formato de usuario incorrecto en línea: " + linea);
+                if (partes.length == 4) {
+                    String usuario = partes[0];
+                    String contraseña = partes[1];
+                    String tipoUsuario = partes[2];
+                    String dinero = partes[3];
+                    usuarios.put(usuario, new String[]{contraseña, tipoUsuario, dinero});
                 }
             }
         } catch (IOException e) {
-            System.err.println("Error al cargar usuarios: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
-    private static void guardarUsuarios() {
+    private void guardarUsuarios() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(ARCHIVO_USUARIOS))) {
             for (Map.Entry<String, String[]> entry : usuarios.entrySet()) {
-                writer.write(entry.getKey() + "," + entry.getValue()[0] + "," + entry.getValue()[1] + "," + entry.getValue()[2]);
+                String usuario = entry.getKey();
+                String[] datos = entry.getValue();
+                String contraseña = datos[0];
+                String tipoUsuario = datos[1];
+                String dinero = datos[2];
+                writer.write(usuario + "," + contraseña + "," + tipoUsuario + "," + dinero);
                 writer.newLine();
             }
         } catch (IOException e) {
-            System.err.println("Error al guardar usuarios: " + e.getMessage());
-        }
-    }
-
-    private static void crearArchivoTxt(String nombreArchivo) {
-        try {
-            File archivo = new File(nombreArchivo);
-            if (archivo.createNewFile()) {
-                System.out.println("Archivo creado: " + archivo.getName());
-            } else {
-                System.out.println("El archivo ya existe.");
-            }
-        } catch (IOException e) {
-            System.out.println("Ocurrió un error al crear el archivo.");
             e.printStackTrace();
         }
     }
