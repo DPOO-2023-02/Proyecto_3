@@ -2,6 +2,7 @@ package usuarios;
 
 import java.util.ArrayList;
 import interfaces.PresentacionCliente;
+import piezas.Pieza;
 
 public class Cliente extends Usuario {
     
