@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,7 +31,14 @@ public class SistemaLoginGUI extends JFrame {
         setLayout(new BorderLayout());
 
         // Panel para la imagen en el centro
-        JLabel imageLabel = new JLabel(new ImageIcon("casino.jpg"));
+        JLabel imageLabel = new JLabel();
+        URL imageUrl = getClass().getClassLoader().getResource("imagenes/subasta.png");
+        if (imageUrl != null) {
+            ImageIcon icon = new ImageIcon(imageUrl);
+            imageLabel.setIcon(icon);
+        } else {
+            imageLabel.setText("Imagen no encontrada");
+        }
         add(imageLabel, BorderLayout.CENTER);
 
         // Panel para los botones en la parte inferior
