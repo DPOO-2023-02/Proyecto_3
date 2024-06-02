@@ -1,9 +1,7 @@
 package presentacion;
 
 import java.awt.GridLayout;
-
 import javax.swing.*;
-
 import interfaces.PresentacionAdministrador;
 import usuarios.Administrador;
 
@@ -477,7 +475,7 @@ public class PresentacionAdministradorImpl implements PresentacionAdministrador 
             boolean tieneColor = Boolean.parseBoolean(tieneColorField.getText());
 
             Administrador.agregarPieza(titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio, 5,
-                    null, null, null, null, null, false, null, null, resolucion, relacionImagen, false, false, tieneColor, false);
+                    null, null, null, resolucion, material, false, null, null, relacionImagen, tieneColor, false, false, false);
             agregarPiezaFrame.dispose();
         });
 

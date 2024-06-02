@@ -3,7 +3,6 @@ package presentacion;
 import javax.swing.*;
 
 import interfaces.PresentacionAdministrador;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,13 +11,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SistemaLoginGUI extends JFrame {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L; // Agregar serialVersionUID
     private static final String ARCHIVO_USUARIOS = "usuarios.txt";
     private Map<String, String[]> usuarios = new HashMap<>();
-    private PresentacionAdministrador usuarioService;
+    private PresentacionAdministrador presentacionAdministrador;
 
-    public SistemaLoginGUI(PresentacionAdministrador usuarioService) {
-        this.usuarioService = usuarioService;
+    public SistemaLoginGUI(PresentacionAdministrador presentacionAdministrador) {
+        this.presentacionAdministrador = presentacionAdministrador;
         cargarUsuarios();
         initComponents();
     }
@@ -91,7 +90,7 @@ public class SistemaLoginGUI extends JFrame {
 
                 if (usuarios.containsKey(usuario) && usuarios.get(usuario)[0].equals(contraseña)) {
                     String tipoUsuario = usuarios.get(usuario)[1];
-                    usuarioService.iniciarSesion(tipoUsuario);
+                    presentacionAdministrador.iniciarSesion(tipoUsuario);
                     loginFrame.dispose();
                 } else {
                     JOptionPane.showMessageDialog(loginFrame, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
@@ -189,7 +188,7 @@ public class SistemaLoginGUI extends JFrame {
     }
 
     public static void main(String[] args) {
-    	PresentacionAdministrador usuarioService = new PresentacionAdministradorImpl();
-        SwingUtilities.invokeLater(() -> new SistemaLoginGUI(usuarioService).setVisible(true));
+        PresentacionAdministrador presentacionAdministrador = new PresentacionAdministradorImpl();
+        SwingUtilities.invokeLater(() -> new SistemaLoginGUI(presentacionAdministrador).setVisible(true));
     }
 }
