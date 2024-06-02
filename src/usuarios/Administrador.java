@@ -20,69 +20,40 @@ public class Administrador extends Usuario {
 
     UsuarioPiezas admin = new UsuarioPiezas();
 
-    public static void agregarPieza(String titulo, String anio, String autores, String lugarCreacion, boolean disponibilidadVenta,
-                                    String propietarioActual, String ubicacionActual, double precio, int tipoPieza,
-                                    String material, String tamanio, String lienzo, 
-                                    String materiales, String detallesInstalacion, boolean requiereElectricidad, String peso, String dimensiones,
-                                    String resolucion, String relacionImagen, boolean audio, boolean tienecolor, 
-                                    boolean tieneColor, boolean esDigital) {
-
-        switch (tipoPieza) {
-            case 1:
-                crearPintura(titulo, anio, autores, lugarCreacion, disponibilidadVenta, propietarioActual, ubicacionActual, precio, material, tamanio, lienzo);
-                break;
-            case 2:
-                crearEscultura(titulo, anio, autores, lugarCreacion, disponibilidadVenta, propietarioActual, ubicacionActual, precio, materiales, detallesInstalacion, requiereElectricidad, peso, dimensiones);
-                break;
-            case 3:
-                crearVideo(titulo, anio, autores, lugarCreacion, disponibilidadVenta, propietarioActual, ubicacionActual, precio, resolucion, relacionImagen, audio, tienecolor);
-                break;
-            case 4:
-                crearFotografia(titulo, anio, autores, lugarCreacion, disponibilidadVenta, propietarioActual, ubicacionActual, precio, resolucion, relacionImagen, tieneColor, esDigital);
-                break;
-            case 5:
-                crearImpresion(titulo, anio, autores, lugarCreacion, disponibilidadVenta, propietarioActual, ubicacionActual, precio, resolucion, material, relacionImagen, tieneColor);
-                break;
-            default:
-                JOptionPane.showMessageDialog(null, "Tipo de pieza no válido.", "Error", JOptionPane.ERROR_MESSAGE);
-                break;
-        }
-    }
-
-    private static void crearPintura(String titulo, String anio, String autores, String lugarCreacion, boolean disponibilidadVenta,
-                                     String propietarioActual, String ubicacionActual, double precio, String material, String tamanio, String lienzo) {
+    public static void crearPintura(String titulo, String anio, String autores, String lugarCreacion, boolean disponibilidadVenta,
+                                    String propietarioActual, String ubicacionActual, double precio, String material, String tamanio, String lienzo) {
         Pintura nuevaPintura = new Pintura(titulo, anio, autores, lugarCreacion, disponibilidadVenta,
                 new ArrayList<>(), propietarioActual, ubicacionActual, precio, material, tamanio, lienzo);
         Inventario.agregarPieza(nuevaPintura);
         JOptionPane.showMessageDialog(null, "Pintura agregada exitosamente al inventario.");
     }
 
-    private static void crearEscultura(String titulo, String anio, String autores, String lugarCreacion, boolean disponibilidadVenta,
-                                       String propietarioActual, String ubicacionActual, double precio, String materiales, String detallesInstalacion, boolean requiereElectricidad, String peso, String dimensiones) {
+    public static void crearEscultura(String titulo, String anio, String autores, String lugarCreacion, boolean disponibilidadVenta,
+                                      String propietarioActual, String ubicacionActual, double precio, String materiales, String detallesInstalacion, Boolean requiereElectricidad, String peso, String dimensiones) {
         Escultura nuevaEscultura = new Escultura(titulo, anio, autores, lugarCreacion, disponibilidadVenta,
                 new ArrayList<>(), propietarioActual, ubicacionActual, precio, materiales, detallesInstalacion, requiereElectricidad, peso, dimensiones);
         Inventario.agregarPieza(nuevaEscultura);
         JOptionPane.showMessageDialog(null, "Escultura agregada exitosamente al inventario.");
     }
 
-    private static void crearVideo(String titulo, String anio, String autores, String lugarCreacion, boolean disponibilidadVenta,
-                                   String propietarioActual, String ubicacionActual, double precio, String resolucion, String relacionImagen, boolean audio, boolean tienecolor) {
+    public static void crearVideo(String titulo, String anio, String autores, String lugarCreacion, boolean disponibilidadVenta,
+                                  String propietarioActual, String ubicacionActual, double precio, String resolucion, String relacionImagen, Boolean audio, Boolean tienecolor) {
         Video nuevoVideo = new Video(titulo, anio, autores, lugarCreacion, disponibilidadVenta,
                 new ArrayList<>(), propietarioActual, ubicacionActual, precio, resolucion, relacionImagen, audio, tienecolor);
         Inventario.agregarPieza(nuevoVideo);
         JOptionPane.showMessageDialog(null, "Video agregado exitosamente al inventario.");
     }
 
-    private static void crearFotografia(String titulo, String anio, String autores, String lugarCreacion, boolean disponibilidadVenta,
-                                        String propietarioActual, String ubicacionActual, double precio, String resolucion, String relacionImagen, boolean tieneColor, boolean esDigital) {
+    public static void crearFotografia(String titulo, String anio, String autores, String lugarCreacion, boolean disponibilidadVenta,
+                                       String propietarioActual, String ubicacionActual, double precio, String resolucion, String relacionImagen, Boolean tieneColor, Boolean esDigital) {
         Fotografia nuevaFotografia = new Fotografia(titulo, anio, autores, lugarCreacion, disponibilidadVenta,
                 new ArrayList<>(), propietarioActual, ubicacionActual, precio, resolucion, relacionImagen, tieneColor, esDigital);
         Inventario.agregarPieza(nuevaFotografia);
         JOptionPane.showMessageDialog(null, "Fotografía agregada exitosamente al inventario.");
     }
 
-    private static void crearImpresion(String titulo, String anio, String autores, String lugarCreacion, boolean disponibilidadVenta,
-                                       String propietarioActual, String ubicacionActual, double precio, String resolucion, String material, String relacionImagen, boolean tieneColor) {
+    public static void crearImpresion(String titulo, String anio, String autores, String lugarCreacion, boolean disponibilidadVenta,
+                                      String propietarioActual, String ubicacionActual, double precio, String resolucion, String material, String relacionImagen, Boolean tieneColor) {
         Impresion nuevaImpresion = new Impresion(titulo, anio, autores, lugarCreacion, disponibilidadVenta,
                 new ArrayList<>(), propietarioActual, ubicacionActual, precio, resolucion, material, relacionImagen, tieneColor);
         Inventario.agregarPieza(nuevaImpresion);

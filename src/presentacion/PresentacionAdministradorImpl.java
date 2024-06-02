@@ -147,8 +147,8 @@ public class PresentacionAdministradorImpl implements PresentacionAdministrador 
             String tamanio = tamanioField.getText();
             String lienzo = lienzoField.getText();
 
-            Administrador.agregarPieza(titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio, 1,
-                    material, tamanio, lienzo, null, null, false, null, null, null, null, false, false, false, false);
+            Administrador.crearPintura(titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio,
+                    material, tamanio, lienzo);
             agregarPiezaFrame.dispose();
         });
 
@@ -225,12 +225,12 @@ public class PresentacionAdministradorImpl implements PresentacionAdministrador 
             double precio = Double.parseDouble(precioField.getText());
             String materiales = materialesField.getText();
             String detallesInstalacion = detallesInstalacionField.getText();
-            boolean requiereElectricidad = Boolean.parseBoolean(requiereElectricidadField.getText());
+            Boolean requiereElectricidad = Boolean.parseBoolean(requiereElectricidadField.getText());
             String peso = pesoField.getText();
             String dimensiones = dimensionesField.getText();
 
-            Administrador.agregarPieza(titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio, 2,
-                    null, null, null, materiales, detallesInstalacion, requiereElectricidad, peso, dimensiones, null, null, false, false, false, false);
+            Administrador.crearEscultura(titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio,
+                    materiales, detallesInstalacion, requiereElectricidad, peso, dimensiones);
             agregarPiezaFrame.dispose();
         });
 
@@ -309,11 +309,11 @@ public class PresentacionAdministradorImpl implements PresentacionAdministrador 
             double precio = Double.parseDouble(precioField.getText());
             String resolucion = resolucionField.getText();
             String relacionImagen = relacionImagenField.getText();
-            boolean audio = Boolean.parseBoolean(audioField.getText());
-            boolean tieneColor = Boolean.parseBoolean(tieneColorField.getText());
+            Boolean audio = Boolean.parseBoolean(audioField.getText());
+            Boolean tieneColor = Boolean.parseBoolean(tieneColorField.getText());
 
-            Administrador.agregarPieza(titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio, 3,
-                    null, null, null, null, null, false, null, null, resolucion, relacionImagen, audio, tieneColor, false, false);
+            Administrador.crearVideo(titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio,
+                    resolucion, relacionImagen, audio, tieneColor);
             agregarPiezaFrame.dispose();
         });
 
@@ -390,11 +390,11 @@ public class PresentacionAdministradorImpl implements PresentacionAdministrador 
             double precio = Double.parseDouble(precioField.getText());
             String resolucion = resolucionField.getText();
             String relacionImagen = relacionImagenField.getText();
-            boolean tieneColor = Boolean.parseBoolean(tieneColorField.getText());
-            boolean esDigital = Boolean.parseBoolean(esDigitalField.getText());
+            Boolean tieneColor = Boolean.parseBoolean(tieneColorField.getText());
+            Boolean esDigital = Boolean.parseBoolean(esDigitalField.getText());
 
-            Administrador.agregarPieza(titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio, 4,
-                    null, null, null, null, null, false, null, null, resolucion, relacionImagen, false, false, tieneColor, esDigital);
+            Administrador.crearFotografia(titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio,
+                    resolucion, relacionImagen, tieneColor, esDigital);
             agregarPiezaFrame.dispose();
         });
 
@@ -472,10 +472,10 @@ public class PresentacionAdministradorImpl implements PresentacionAdministrador 
             String resolucion = resolucionField.getText();
             String material = materialField.getText();
             String relacionImagen = relacionImagenField.getText();
-            boolean tieneColor = Boolean.parseBoolean(tieneColorField.getText());
+            Boolean tieneColor = Boolean.parseBoolean(tieneColorField.getText());
 
-            Administrador.agregarPieza(titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio, 5,
-                    null, null, null, resolucion, material, false, null, null, relacionImagen, tieneColor, false, false, false);
+            Administrador.crearImpresion(titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio,
+                    resolucion, material, relacionImagen, tieneColor);
             agregarPiezaFrame.dispose();
         });
 

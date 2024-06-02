@@ -1,38 +1,55 @@
 package usuarios;
 
 import java.util.ArrayList;
-import java.util.Scanner;
-
+import interfaces.PresentacionCliente;
 
 public class Cliente extends Usuario {
-	
-    private static ArrayList<String> historialCompras;
+    
+    private ArrayList<String> historialCompras;
+    private PresentacionCliente presentacion;
 
-    public Cliente(String nombre, String contrasenia, double dineroInicial) {
+    public Cliente(String nombre, String contrasenia, double dineroInicial, PresentacionCliente presentacion) {
         super(nombre, contrasenia, dineroInicial);
+        historialCompras = new ArrayList<>();
+        this.presentacion = presentacion;
     }
 
-    public static void consultarDinero() {
-        System.out.println("Saldo disponible: " + getDinero() + " unidades monetarias.");
+    public void consultarDinero() {
+        presentacion.consultarDinero(getDinero());
     }
 
-    public static void agregarFondos(Scanner scanner) {
-        System.out.println("Ingrese la cantidad de fondos a agregar:");
-        double cantidad = scanner.nextDouble();
+    public void agregarFondos(double cantidad) {
         if (cantidad > 0) {
             setDinero(getDinero() + cantidad);
-            System.out.println("Fondos agregados exitosamente. Saldo actual: " + getDinero());
+            presentacion.mostrarMensaje("Fondos agregados exitosamente. Saldo actual: " + getDinero());
         } else {
-            System.out.println("Cantidad no válida. Por favor, ingrese un valor positivo.");
+            presentacion.mostrarError("Cantidad no válida. Por favor, ingrese un valor positivo.");
         }
     }
 
-	public static ArrayList<String> verHistorialCompras() {
-        return historialCompras;
+    public void verHistorialCompras() {
+        if (historialCompras.isEmpty()) {
+            presentacion.mostrarMensaje("No hay compras en el historial.");
+        } else {
+            StringBuilder sb = new StringBuilder("Historial de Compras:\n");
+            for (String compra : historialCompras) {
+                sb.append(compra).append("\n");
+            }
+            presentacion.mostrarHistorialCompras(sb.toString());
+        }
     }
 
-	public static void verMisPiezas() {
-		// TODO Auto-generated method stub
-		
-	}
+    public void verMisPiezas() {
+        // Implementa la lógica para devolver las piezas del cliente
+        ArrayList<Pieza> piezas = new ArrayList<>(); // Placeholder
+        if (piezas.isEmpty()) {
+            presentacion.mostrarMensaje("No tienes piezas.");
+        } else {
+            StringBuilder sb = new StringBuilder("Mis Piezas:\n");
+            for (Pieza pieza : piezas) {
+                sb.append(pieza.toString()).append("\n");
+            }
+            presentacion.mostrarMisPiezas(sb.toString());
+        }
+    }
 }
