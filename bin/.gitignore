@@ -1,5 +1,13 @@
-/presentacion/
+/consola/
+/historial/
 /menu/
+/module-info.class
+/piezas/
+/presentacion/
 /pruebas/
 /usuarios/
+<<<<<<< HEAD
 /interfaces/
+=======
+/venta/
+>>>>>>> 6815c19d2f781b4aaf58e3a050d9e8d2f8c2f49a

@@ -4,3 +4,7 @@ Galeria,123,comprador,123.0
 andresito,123,comprador,10000.0
 santiago,123,administrador,123123.0
 juanito,123,administrador,100.0
+<<<<<<< HEAD
+=======
+peperepe,123,administrador,100
+>>>>>>> 6815c19d2f781b4aaf58e3a050d9e8d2f8c2f49a
