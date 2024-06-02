@@ -1,13 +1,13 @@
-package presentacion; 
+package presentacion;
 
 import java.awt.GridLayout;
 
 import javax.swing.*;
 
-import interfaces.UsuarioService;
+import interfaces.PresentacionAdministrador;
 import usuarios.Administrador;
 
-public class UsuarioServiceImpl implements UsuarioService {
+public class PresentacionAdministradorImpl implements PresentacionAdministrador {
     @Override
     public void iniciarSesion(String tipoUsuario) {
         if (tipoUsuario.equals("administrador")) {
@@ -45,7 +45,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
         backButton.addActionListener(e -> {
             adminFrame.dispose();
-            new SistemaLoginGUI(new UsuarioServiceImpl()).setVisible(true);
+            new SistemaLoginGUI(new PresentacionAdministradorImpl()).setVisible(true);
         });
 
         adminFrame.add(addButton);

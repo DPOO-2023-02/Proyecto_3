@@ -1,5 +1,5 @@
 package interfaces;
 
-public interface UsuarioService {
+public interface PresentacionAdministrador {
     void iniciarSesion(String tipoUsuario);
 }
