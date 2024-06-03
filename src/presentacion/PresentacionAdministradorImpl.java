@@ -1,5 +1,6 @@
 package presentacion;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.*;
 import interfaces.PresentacionAdministrador;
@@ -106,34 +107,62 @@ public class PresentacionAdministradorImpl implements PresentacionAdministrador 
 
     private void mostrarFormularioAgregarPintura() {
         JFrame agregarPiezaFrame = new JFrame("Agregar Pintura");
-        agregarPiezaFrame.setSize(400, 400);
+        agregarPiezaFrame.setSize(400, 500);
         agregarPiezaFrame.setLocationRelativeTo(null);
-        agregarPiezaFrame.setLayout(new GridLayout(10, 2));
+        agregarPiezaFrame.setLayout(new BorderLayout());
 
-        JLabel tituloLabel = new JLabel("Título:");
+        JLabel titleLabel = new JLabel("== PINTURA ==", SwingConstants.CENTER);
+        agregarPiezaFrame.add(titleLabel, BorderLayout.NORTH);
+
+        JPanel formPanel = new JPanel(new GridLayout(11, 2, 5, 5));
+        
+        formPanel.add(new JLabel("Título:"));
         JTextField tituloField = new JTextField();
-        JLabel anioLabel = new JLabel("Año:");
-        JTextField anioField = new JTextField();
-        JLabel autoresLabel = new JLabel("Autores:");
-        JTextField autoresField = new JTextField();
-        JLabel lugarCreacionLabel = new JLabel("Lugar de Creación:");
-        JTextField lugarCreacionField = new JTextField();
-        JLabel disponibilidadLabel = new JLabel("Disponibilidad (true/false):");
-        JTextField disponibilidadField = new JTextField();
-        JLabel propietarioLabel = new JLabel("Propietario Actual:");
-        JTextField propietarioField = new JTextField();
-        JLabel ubicacionLabel = new JLabel("Ubicación Actual:");
-        JTextField ubicacionField = new JTextField();
-        JLabel precioLabel = new JLabel("Precio:");
-        JTextField precioField = new JTextField();
-        JLabel materialLabel = new JLabel("Material:");
-        JTextField materialField = new JTextField();
-        JLabel tamanioLabel = new JLabel("Tamaño:");
-        JTextField tamanioField = new JTextField();
-        JLabel lienzoLabel = new JLabel("Lienzo:");
-        JTextField lienzoField = new JTextField();
-        JButton agregarButton = new JButton("Agregar");
+        formPanel.add(tituloField);
 
+        formPanel.add(new JLabel("Año:"));
+        JTextField anioField = new JTextField();
+        formPanel.add(anioField);
+
+        formPanel.add(new JLabel("Autores:"));
+        JTextField autoresField = new JTextField();
+        formPanel.add(autoresField);
+
+        formPanel.add(new JLabel("Lugar de Creación:"));
+        JTextField lugarCreacionField = new JTextField();
+        formPanel.add(lugarCreacionField);
+
+        formPanel.add(new JLabel("Disponibilidad (true/false):"));
+        JTextField disponibilidadField = new JTextField();
+        formPanel.add(disponibilidadField);
+
+        formPanel.add(new JLabel("Propietario Actual:"));
+        JTextField propietarioField = new JTextField();
+        formPanel.add(propietarioField);
+
+        formPanel.add(new JLabel("Ubicación Actual:"));
+        JTextField ubicacionField = new JTextField();
+        formPanel.add(ubicacionField);
+
+        formPanel.add(new JLabel("Precio:"));
+        JTextField precioField = new JTextField();
+        formPanel.add(precioField);
+
+        formPanel.add(new JLabel("Material:"));
+        JTextField materialField = new JTextField();
+        formPanel.add(materialField);
+
+        formPanel.add(new JLabel("Tamaño:"));
+        JTextField tamanioField = new JTextField();
+        formPanel.add(tamanioField);
+
+        formPanel.add(new JLabel("Lienzo:"));
+        JTextField lienzoField = new JTextField();
+        formPanel.add(lienzoField);
+
+        agregarPiezaFrame.add(formPanel, BorderLayout.CENTER);
+
+        JButton agregarButton = new JButton("Agregar");
         agregarButton.addActionListener(e -> {
             String titulo = tituloField.getText();
             String anio = anioField.getText();
@@ -147,73 +176,82 @@ public class PresentacionAdministradorImpl implements PresentacionAdministrador 
             String tamanio = tamanioField.getText();
             String lienzo = lienzoField.getText();
 
-            Administrador.crearPintura(titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio,
-                    material, tamanio, lienzo);
+            Administrador.crearPintura(titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio, material, tamanio, lienzo);
             agregarPiezaFrame.dispose();
         });
 
-        agregarPiezaFrame.add(tituloLabel);
-        agregarPiezaFrame.add(tituloField);
-        agregarPiezaFrame.add(anioLabel);
-        agregarPiezaFrame.add(anioField);
-        agregarPiezaFrame.add(autoresLabel);
-        agregarPiezaFrame.add(autoresField);
-        agregarPiezaFrame.add(lugarCreacionLabel);
-        agregarPiezaFrame.add(lugarCreacionField);
-        agregarPiezaFrame.add(disponibilidadLabel);
-        agregarPiezaFrame.add(disponibilidadField);
-        agregarPiezaFrame.add(propietarioLabel);
-        agregarPiezaFrame.add(propietarioField);
-        agregarPiezaFrame.add(ubicacionLabel);
-        agregarPiezaFrame.add(ubicacionField);
-        agregarPiezaFrame.add(precioLabel);
-        agregarPiezaFrame.add(precioField);
-        agregarPiezaFrame.add(materialLabel);
-        agregarPiezaFrame.add(materialField);
-        agregarPiezaFrame.add(tamanioLabel);
-        agregarPiezaFrame.add(tamanioField);
-        agregarPiezaFrame.add(lienzoLabel);
-        agregarPiezaFrame.add(lienzoField);
-        agregarPiezaFrame.add(new JLabel());
-        agregarPiezaFrame.add(agregarButton);
+        agregarPiezaFrame.add(agregarButton, BorderLayout.SOUTH);
 
         agregarPiezaFrame.setVisible(true);
     }
 
+
     private void mostrarFormularioAgregarEscultura() {
         JFrame agregarPiezaFrame = new JFrame("Agregar Escultura");
-        agregarPiezaFrame.setSize(400, 400);
+        agregarPiezaFrame.setSize(400, 500);
         agregarPiezaFrame.setLocationRelativeTo(null);
-        agregarPiezaFrame.setLayout(new GridLayout(11, 2));
+        agregarPiezaFrame.setLayout(new BorderLayout());
 
-        JLabel tituloLabel = new JLabel("Título:");
+        JLabel titleLabel = new JLabel("== ESCULTURA ==", SwingConstants.CENTER);
+        agregarPiezaFrame.add(titleLabel, BorderLayout.NORTH);
+
+        JPanel formPanel = new JPanel(new GridLayout(12, 2, 5, 5));
+        
+        formPanel.add(new JLabel("Título:"));
         JTextField tituloField = new JTextField();
-        JLabel anioLabel = new JLabel("Año:");
-        JTextField anioField = new JTextField();
-        JLabel autoresLabel = new JLabel("Autores:");
-        JTextField autoresField = new JTextField();
-        JLabel lugarCreacionLabel = new JLabel("Lugar de Creación:");
-        JTextField lugarCreacionField = new JTextField();
-        JLabel disponibilidadLabel = new JLabel("Disponibilidad (true/false):");
-        JTextField disponibilidadField = new JTextField();
-        JLabel propietarioLabel = new JLabel("Propietario Actual:");
-        JTextField propietarioField = new JTextField();
-        JLabel ubicacionLabel = new JLabel("Ubicación Actual:");
-        JTextField ubicacionField = new JTextField();
-        JLabel precioLabel = new JLabel("Precio:");
-        JTextField precioField = new JTextField();
-        JLabel materialesLabel = new JLabel("Materiales:");
-        JTextField materialesField = new JTextField();
-        JLabel detallesInstalacionLabel = new JLabel("Detalles de Instalación:");
-        JTextField detallesInstalacionField = new JTextField();
-        JLabel requiereElectricidadLabel = new JLabel("¿Requiere Electricidad? (true/false):");
-        JTextField requiereElectricidadField = new JTextField();
-        JLabel pesoLabel = new JLabel("Peso:");
-        JTextField pesoField = new JTextField();
-        JLabel dimensionesLabel = new JLabel("Dimensiones:");
-        JTextField dimensionesField = new JTextField();
-        JButton agregarButton = new JButton("Agregar");
+        formPanel.add(tituloField);
 
+        formPanel.add(new JLabel("Año:"));
+        JTextField anioField = new JTextField();
+        formPanel.add(anioField);
+
+        formPanel.add(new JLabel("Autores:"));
+        JTextField autoresField = new JTextField();
+        formPanel.add(autoresField);
+
+        formPanel.add(new JLabel("Lugar de Creación:"));
+        JTextField lugarCreacionField = new JTextField();
+        formPanel.add(lugarCreacionField);
+
+        formPanel.add(new JLabel("Disponibilidad (true/false):"));
+        JTextField disponibilidadField = new JTextField();
+        formPanel.add(disponibilidadField);
+
+        formPanel.add(new JLabel("Propietario Actual:"));
+        JTextField propietarioField = new JTextField();
+        formPanel.add(propietarioField);
+
+        formPanel.add(new JLabel("Ubicación Actual:"));
+        JTextField ubicacionField = new JTextField();
+        formPanel.add(ubicacionField);
+
+        formPanel.add(new JLabel("Precio:"));
+        JTextField precioField = new JTextField();
+        formPanel.add(precioField);
+
+        formPanel.add(new JLabel("Materiales:"));
+        JTextField materialesField = new JTextField();
+        formPanel.add(materialesField);
+
+        formPanel.add(new JLabel("Detalles de Instalación:"));
+        JTextField detallesInstalacionField = new JTextField();
+        formPanel.add(detallesInstalacionField);
+
+        formPanel.add(new JLabel("¿Requiere Electricidad? (true/false):"));
+        JTextField requiereElectricidadField = new JTextField();
+        formPanel.add(requiereElectricidadField);
+
+        formPanel.add(new JLabel("Peso:"));
+        JTextField pesoField = new JTextField();
+        formPanel.add(pesoField);
+
+        formPanel.add(new JLabel("Dimensiones:"));
+        JTextField dimensionesField = new JTextField();
+        formPanel.add(dimensionesField);
+
+        agregarPiezaFrame.add(formPanel, BorderLayout.CENTER);
+
+        JButton agregarButton = new JButton("Agregar");
         agregarButton.addActionListener(e -> {
             String titulo = tituloField.getText();
             String anio = anioField.getText();
@@ -229,75 +267,78 @@ public class PresentacionAdministradorImpl implements PresentacionAdministrador 
             String peso = pesoField.getText();
             String dimensiones = dimensionesField.getText();
 
-            Administrador.crearEscultura(titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio,
-                    materiales, detallesInstalacion, requiereElectricidad, peso, dimensiones);
+            Administrador.crearEscultura(titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio, materiales, detallesInstalacion, requiereElectricidad, peso, dimensiones);
             agregarPiezaFrame.dispose();
         });
 
-        agregarPiezaFrame.add(tituloLabel);
-        agregarPiezaFrame.add(tituloField);
-        agregarPiezaFrame.add(anioLabel);
-        agregarPiezaFrame.add(anioField);
-        agregarPiezaFrame.add(autoresLabel);
-        agregarPiezaFrame.add(autoresField);
-        agregarPiezaFrame.add(lugarCreacionLabel);
-        agregarPiezaFrame.add(lugarCreacionField);
-        agregarPiezaFrame.add(disponibilidadLabel);
-        agregarPiezaFrame.add(disponibilidadField);
-        agregarPiezaFrame.add(propietarioLabel);
-        agregarPiezaFrame.add(propietarioField);
-        agregarPiezaFrame.add(ubicacionLabel);
-        agregarPiezaFrame.add(ubicacionField);
-        agregarPiezaFrame.add(precioLabel);
-        agregarPiezaFrame.add(precioField);
-        agregarPiezaFrame.add(materialesLabel);
-        agregarPiezaFrame.add(materialesField);
-        agregarPiezaFrame.add(detallesInstalacionLabel);
-        agregarPiezaFrame.add(detallesInstalacionField);
-        agregarPiezaFrame.add(requiereElectricidadLabel);
-        agregarPiezaFrame.add(requiereElectricidadField);
-        agregarPiezaFrame.add(pesoLabel);
-        agregarPiezaFrame.add(pesoField);
-        agregarPiezaFrame.add(dimensionesLabel);
-        agregarPiezaFrame.add(dimensionesField);
-        agregarPiezaFrame.add(new JLabel());
-        agregarPiezaFrame.add(agregarButton);
+        agregarPiezaFrame.add(agregarButton, BorderLayout.SOUTH);
 
         agregarPiezaFrame.setVisible(true);
     }
 
+
     private void mostrarFormularioAgregarVideo() {
         JFrame agregarPiezaFrame = new JFrame("Agregar Video");
-        agregarPiezaFrame.setSize(400, 400);
+        agregarPiezaFrame.setSize(400, 500);
         agregarPiezaFrame.setLocationRelativeTo(null);
-        agregarPiezaFrame.setLayout(new GridLayout(11, 2));
+        agregarPiezaFrame.setLayout(new BorderLayout());
 
-        JLabel tituloLabel = new JLabel("Título:");
+        JLabel titleLabel = new JLabel("== VIDEO ==", SwingConstants.CENTER);
+        agregarPiezaFrame.add(titleLabel, BorderLayout.NORTH);
+
+        JPanel formPanel = new JPanel(new GridLayout(12, 2, 5, 5));
+        
+        formPanel.add(new JLabel("Título:"));
         JTextField tituloField = new JTextField();
-        JLabel anioLabel = new JLabel("Año:");
-        JTextField anioField = new JTextField();
-        JLabel autoresLabel = new JLabel("Autores:");
-        JTextField autoresField = new JTextField();
-        JLabel lugarCreacionLabel = new JLabel("Lugar de Creación:");
-        JTextField lugarCreacionField = new JTextField();
-        JLabel disponibilidadLabel = new JLabel("Disponibilidad (true/false):");
-        JTextField disponibilidadField = new JTextField();
-        JLabel propietarioLabel = new JLabel("Propietario Actual:");
-        JTextField propietarioField = new JTextField();
-        JLabel ubicacionLabel = new JLabel("Ubicación Actual:");
-        JTextField ubicacionField = new JTextField();
-        JLabel precioLabel = new JLabel("Precio:");
-        JTextField precioField = new JTextField();
-        JLabel resolucionLabel = new JLabel("Resolución:");
-        JTextField resolucionField = new JTextField();
-        JLabel relacionImagenLabel = new JLabel("Relación de Imagen:");
-        JTextField relacionImagenField = new JTextField();
-        JLabel audioLabel = new JLabel("¿Tiene Audio? (true/false):");
-        JTextField audioField = new JTextField();
-        JLabel tieneColorLabel = new JLabel("¿Tiene Color? (true/false):");
-        JTextField tieneColorField = new JTextField();
-        JButton agregarButton = new JButton("Agregar");
+        formPanel.add(tituloField);
 
+        formPanel.add(new JLabel("Año:"));
+        JTextField anioField = new JTextField();
+        formPanel.add(anioField);
+
+        formPanel.add(new JLabel("Autores:"));
+        JTextField autoresField = new JTextField();
+        formPanel.add(autoresField);
+
+        formPanel.add(new JLabel("Lugar de Creación:"));
+        JTextField lugarCreacionField = new JTextField();
+        formPanel.add(lugarCreacionField);
+
+        formPanel.add(new JLabel("Disponibilidad (true/false):"));
+        JTextField disponibilidadField = new JTextField();
+        formPanel.add(disponibilidadField);
+
+        formPanel.add(new JLabel("Propietario Actual:"));
+        JTextField propietarioField = new JTextField();
+        formPanel.add(propietarioField);
+
+        formPanel.add(new JLabel("Ubicación Actual:"));
+        JTextField ubicacionField = new JTextField();
+        formPanel.add(ubicacionField);
+
+        formPanel.add(new JLabel("Precio:"));
+        JTextField precioField = new JTextField();
+        formPanel.add(precioField);
+
+        formPanel.add(new JLabel("Resolución:"));
+        JTextField resolucionField = new JTextField();
+        formPanel.add(resolucionField);
+
+        formPanel.add(new JLabel("Relación de Imagen:"));
+        JTextField relacionImagenField = new JTextField();
+        formPanel.add(relacionImagenField);
+
+        formPanel.add(new JLabel("¿Tiene Audio? (true/false):"));
+        JTextField audioField = new JTextField();
+        formPanel.add(audioField);
+
+        formPanel.add(new JLabel("¿Tiene Color? (true/false):"));
+        JTextField tieneColorField = new JTextField();
+        formPanel.add(tieneColorField);
+
+        agregarPiezaFrame.add(formPanel, BorderLayout.CENTER);
+
+        JButton agregarButton = new JButton("Agregar");
         agregarButton.addActionListener(e -> {
             String titulo = tituloField.getText();
             String anio = anioField.getText();
@@ -312,73 +353,78 @@ public class PresentacionAdministradorImpl implements PresentacionAdministrador 
             Boolean audio = Boolean.parseBoolean(audioField.getText());
             Boolean tieneColor = Boolean.parseBoolean(tieneColorField.getText());
 
-            Administrador.crearVideo(titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio,
-                    resolucion, relacionImagen, audio, tieneColor);
+            Administrador.crearVideo(titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio, resolucion, relacionImagen, audio, tieneColor);
             agregarPiezaFrame.dispose();
         });
 
-        agregarPiezaFrame.add(tituloLabel);
-        agregarPiezaFrame.add(tituloField);
-        agregarPiezaFrame.add(anioLabel);
-        agregarPiezaFrame.add(anioField);
-        agregarPiezaFrame.add(autoresLabel);
-        agregarPiezaFrame.add(autoresField);
-        agregarPiezaFrame.add(lugarCreacionLabel);
-        agregarPiezaFrame.add(lugarCreacionField);
-        agregarPiezaFrame.add(disponibilidadLabel);
-        agregarPiezaFrame.add(disponibilidadField);
-        agregarPiezaFrame.add(propietarioLabel);
-        agregarPiezaFrame.add(propietarioField);
-        agregarPiezaFrame.add(ubicacionLabel);
-        agregarPiezaFrame.add(ubicacionField);
-        agregarPiezaFrame.add(precioLabel);
-        agregarPiezaFrame.add(precioField);
-        agregarPiezaFrame.add(resolucionLabel);
-        agregarPiezaFrame.add(resolucionField);
-        agregarPiezaFrame.add(relacionImagenLabel);
-        agregarPiezaFrame.add(relacionImagenField);
-        agregarPiezaFrame.add(audioLabel);
-        agregarPiezaFrame.add(audioField);
-        agregarPiezaFrame.add(tieneColorLabel);
-        agregarPiezaFrame.add(tieneColorField);
-        agregarPiezaFrame.add(new JLabel());
-        agregarPiezaFrame.add(agregarButton);
+        agregarPiezaFrame.add(agregarButton, BorderLayout.SOUTH);
 
         agregarPiezaFrame.setVisible(true);
     }
 
+
     private void mostrarFormularioAgregarFotografia() {
         JFrame agregarPiezaFrame = new JFrame("Agregar Fotografía");
-        agregarPiezaFrame.setSize(400, 400);
+        agregarPiezaFrame.setSize(400, 500);
         agregarPiezaFrame.setLocationRelativeTo(null);
-        agregarPiezaFrame.setLayout(new GridLayout(11, 2));
+        agregarPiezaFrame.setLayout(new BorderLayout());
 
-        JLabel tituloLabel = new JLabel("Título:");
+        JLabel titleLabel = new JLabel("== FOTOGRAFÍA ==", SwingConstants.CENTER);
+        agregarPiezaFrame.add(titleLabel, BorderLayout.NORTH);
+
+        JPanel formPanel = new JPanel(new GridLayout(12, 2, 5, 5));
+        
+        formPanel.add(new JLabel("Título:"));
         JTextField tituloField = new JTextField();
-        JLabel anioLabel = new JLabel("Año:");
-        JTextField anioField = new JTextField();
-        JLabel autoresLabel = new JLabel("Autores:");
-        JTextField autoresField = new JTextField();
-        JLabel lugarCreacionLabel = new JLabel("Lugar de Creación:");
-        JTextField lugarCreacionField = new JTextField();
-        JLabel disponibilidadLabel = new JLabel("Disponibilidad (true/false):");
-        JTextField disponibilidadField = new JTextField();
-        JLabel propietarioLabel = new JLabel("Propietario Actual:");
-        JTextField propietarioField = new JTextField();
-        JLabel ubicacionLabel = new JLabel("Ubicación Actual:");
-        JTextField ubicacionField = new JTextField();
-        JLabel precioLabel = new JLabel("Precio:");
-        JTextField precioField = new JTextField();
-        JLabel resolucionLabel = new JLabel("Resolución:");
-        JTextField resolucionField = new JTextField();
-        JLabel relacionImagenLabel = new JLabel("Relación de Imagen:");
-        JTextField relacionImagenField = new JTextField();
-        JLabel tieneColorLabel = new JLabel("¿Tiene Color? (true/false):");
-        JTextField tieneColorField = new JTextField();
-        JLabel esDigitalLabel = new JLabel("¿Es Digital? (true/false):");
-        JTextField esDigitalField = new JTextField();
-        JButton agregarButton = new JButton("Agregar");
+        formPanel.add(tituloField);
 
+        formPanel.add(new JLabel("Año:"));
+        JTextField anioField = new JTextField();
+        formPanel.add(anioField);
+
+        formPanel.add(new JLabel("Autores:"));
+        JTextField autoresField = new JTextField();
+        formPanel.add(autoresField);
+
+        formPanel.add(new JLabel("Lugar de Creación:"));
+        JTextField lugarCreacionField = new JTextField();
+        formPanel.add(lugarCreacionField);
+
+        formPanel.add(new JLabel("Disponibilidad (true/false):"));
+        JTextField disponibilidadField = new JTextField();
+        formPanel.add(disponibilidadField);
+
+        formPanel.add(new JLabel("Propietario Actual:"));
+        JTextField propietarioField = new JTextField();
+        formPanel.add(propietarioField);
+
+        formPanel.add(new JLabel("Ubicación Actual:"));
+        JTextField ubicacionField = new JTextField();
+        formPanel.add(ubicacionField);
+
+        formPanel.add(new JLabel("Precio:"));
+        JTextField precioField = new JTextField();
+        formPanel.add(precioField);
+
+        formPanel.add(new JLabel("Resolución:"));
+        JTextField resolucionField = new JTextField();
+        formPanel.add(resolucionField);
+
+        formPanel.add(new JLabel("Relación de Imagen:"));
+        JTextField relacionImagenField = new JTextField();
+        formPanel.add(relacionImagenField);
+
+        formPanel.add(new JLabel("¿Tiene Color? (true/false):"));
+        JTextField tieneColorField = new JTextField();
+        formPanel.add(tieneColorField);
+
+        formPanel.add(new JLabel("¿Es Digital? (true/false):"));
+        JTextField esDigitalField = new JTextField();
+        formPanel.add(esDigitalField);
+
+        agregarPiezaFrame.add(formPanel, BorderLayout.CENTER);
+
+        JButton agregarButton = new JButton("Agregar");
         agregarButton.addActionListener(e -> {
             String titulo = tituloField.getText();
             String anio = anioField.getText();
@@ -393,73 +439,78 @@ public class PresentacionAdministradorImpl implements PresentacionAdministrador 
             Boolean tieneColor = Boolean.parseBoolean(tieneColorField.getText());
             Boolean esDigital = Boolean.parseBoolean(esDigitalField.getText());
 
-            Administrador.crearFotografia(titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio,
-                    resolucion, relacionImagen, tieneColor, esDigital);
+            Administrador.crearFotografia(titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio, resolucion, relacionImagen, tieneColor, esDigital);
             agregarPiezaFrame.dispose();
         });
 
-        agregarPiezaFrame.add(tituloLabel);
-        agregarPiezaFrame.add(tituloField);
-        agregarPiezaFrame.add(anioLabel);
-        agregarPiezaFrame.add(anioField);
-        agregarPiezaFrame.add(autoresLabel);
-        agregarPiezaFrame.add(autoresField);
-        agregarPiezaFrame.add(lugarCreacionLabel);
-        agregarPiezaFrame.add(lugarCreacionField);
-        agregarPiezaFrame.add(disponibilidadLabel);
-        agregarPiezaFrame.add(disponibilidadField);
-        agregarPiezaFrame.add(propietarioLabel);
-        agregarPiezaFrame.add(propietarioField);
-        agregarPiezaFrame.add(ubicacionLabel);
-        agregarPiezaFrame.add(ubicacionField);
-        agregarPiezaFrame.add(precioLabel);
-        agregarPiezaFrame.add(precioField);
-        agregarPiezaFrame.add(resolucionLabel);
-        agregarPiezaFrame.add(resolucionField);
-        agregarPiezaFrame.add(relacionImagenLabel);
-        agregarPiezaFrame.add(relacionImagenField);
-        agregarPiezaFrame.add(tieneColorLabel);
-        agregarPiezaFrame.add(tieneColorField);
-        agregarPiezaFrame.add(esDigitalLabel);
-        agregarPiezaFrame.add(esDigitalField);
-        agregarPiezaFrame.add(new JLabel());
-        agregarPiezaFrame.add(agregarButton);
+        agregarPiezaFrame.add(agregarButton, BorderLayout.SOUTH);
 
         agregarPiezaFrame.setVisible(true);
     }
 
+
     private void mostrarFormularioAgregarImpresion() {
         JFrame agregarPiezaFrame = new JFrame("Agregar Impresión");
-        agregarPiezaFrame.setSize(400, 400);
+        agregarPiezaFrame.setSize(400, 500);
         agregarPiezaFrame.setLocationRelativeTo(null);
-        agregarPiezaFrame.setLayout(new GridLayout(10, 2));
+        agregarPiezaFrame.setLayout(new BorderLayout());
 
-        JLabel tituloLabel = new JLabel("Título:");
+        JLabel titleLabel = new JLabel("== IMPRESIÓN ==", SwingConstants.CENTER);
+        agregarPiezaFrame.add(titleLabel, BorderLayout.NORTH);
+
+        JPanel formPanel = new JPanel(new GridLayout(12, 2, 5, 5));
+        
+        formPanel.add(new JLabel("Título:"));
         JTextField tituloField = new JTextField();
-        JLabel anioLabel = new JLabel("Año:");
-        JTextField anioField = new JTextField();
-        JLabel autoresLabel = new JLabel("Autores:");
-        JTextField autoresField = new JTextField();
-        JLabel lugarCreacionLabel = new JLabel("Lugar de Creación:");
-        JTextField lugarCreacionField = new JTextField();
-        JLabel disponibilidadLabel = new JLabel("Disponibilidad (true/false):");
-        JTextField disponibilidadField = new JTextField();
-        JLabel propietarioLabel = new JLabel("Propietario Actual:");
-        JTextField propietarioField = new JTextField();
-        JLabel ubicacionLabel = new JLabel("Ubicación Actual:");
-        JTextField ubicacionField = new JTextField();
-        JLabel precioLabel = new JLabel("Precio:");
-        JTextField precioField = new JTextField();
-        JLabel resolucionLabel = new JLabel("Resolución:");
-        JTextField resolucionField = new JTextField();
-        JLabel materialLabel = new JLabel("Material:");
-        JTextField materialField = new JTextField();
-        JLabel relacionImagenLabel = new JLabel("Relación de Imagen:");
-        JTextField relacionImagenField = new JTextField();
-        JLabel tieneColorLabel = new JLabel("¿Tiene Color? (true/false):");
-        JTextField tieneColorField = new JTextField();
-        JButton agregarButton = new JButton("Agregar");
+        formPanel.add(tituloField);
 
+        formPanel.add(new JLabel("Año:"));
+        JTextField anioField = new JTextField();
+        formPanel.add(anioField);
+
+        formPanel.add(new JLabel("Autores:"));
+        JTextField autoresField = new JTextField();
+        formPanel.add(autoresField);
+
+        formPanel.add(new JLabel("Lugar de Creación:"));
+        JTextField lugarCreacionField = new JTextField();
+        formPanel.add(lugarCreacionField);
+
+        formPanel.add(new JLabel("Disponibilidad (true/false):"));
+        JTextField disponibilidadField = new JTextField();
+        formPanel.add(disponibilidadField);
+
+        formPanel.add(new JLabel("Propietario Actual:"));
+        JTextField propietarioField = new JTextField();
+        formPanel.add(propietarioField);
+
+        formPanel.add(new JLabel("Ubicación Actual:"));
+        JTextField ubicacionField = new JTextField();
+        formPanel.add(ubicacionField);
+
+        formPanel.add(new JLabel("Precio:"));
+        JTextField precioField = new JTextField();
+        formPanel.add(precioField);
+
+        formPanel.add(new JLabel("Resolución:"));
+        JTextField resolucionField = new JTextField();
+        formPanel.add(resolucionField);
+
+        formPanel.add(new JLabel("Material:"));
+        JTextField materialField = new JTextField();
+        formPanel.add(materialField);
+
+        formPanel.add(new JLabel("Relación de Imagen:"));
+        JTextField relacionImagenField = new JTextField();
+        formPanel.add(relacionImagenField);
+
+        formPanel.add(new JLabel("¿Tiene Color? (true/false):"));
+        JTextField tieneColorField = new JTextField();
+        formPanel.add(tieneColorField);
+
+        agregarPiezaFrame.add(formPanel, BorderLayout.CENTER);
+
+        JButton agregarButton = new JButton("Agregar");
         agregarButton.addActionListener(e -> {
             String titulo = tituloField.getText();
             String anio = anioField.getText();
@@ -474,40 +525,15 @@ public class PresentacionAdministradorImpl implements PresentacionAdministrador 
             String relacionImagen = relacionImagenField.getText();
             Boolean tieneColor = Boolean.parseBoolean(tieneColorField.getText());
 
-            Administrador.crearImpresion(titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio,
-                    resolucion, material, relacionImagen, tieneColor);
+            Administrador.crearImpresion(titulo, anio, autores, lugarCreacion, disponibilidad, propietario, ubicacion, precio, resolucion, material, relacionImagen, tieneColor);
             agregarPiezaFrame.dispose();
         });
 
-        agregarPiezaFrame.add(tituloLabel);
-        agregarPiezaFrame.add(tituloField);
-        agregarPiezaFrame.add(anioLabel);
-        agregarPiezaFrame.add(anioField);
-        agregarPiezaFrame.add(autoresLabel);
-        agregarPiezaFrame.add(autoresField);
-        agregarPiezaFrame.add(lugarCreacionLabel);
-        agregarPiezaFrame.add(lugarCreacionField);
-        agregarPiezaFrame.add(disponibilidadLabel);
-        agregarPiezaFrame.add(disponibilidadField);
-        agregarPiezaFrame.add(propietarioLabel);
-        agregarPiezaFrame.add(propietarioField);
-        agregarPiezaFrame.add(ubicacionLabel);
-        agregarPiezaFrame.add(ubicacionField);
-        agregarPiezaFrame.add(precioLabel);
-        agregarPiezaFrame.add(precioField);
-        agregarPiezaFrame.add(resolucionLabel);
-        agregarPiezaFrame.add(resolucionField);
-        agregarPiezaFrame.add(materialLabel);
-        agregarPiezaFrame.add(materialField);
-        agregarPiezaFrame.add(relacionImagenLabel);
-        agregarPiezaFrame.add(relacionImagenField);
-        agregarPiezaFrame.add(tieneColorLabel);
-        agregarPiezaFrame.add(tieneColorField);
-        agregarPiezaFrame.add(new JLabel());
-        agregarPiezaFrame.add(agregarButton);
+        agregarPiezaFrame.add(agregarButton, BorderLayout.SOUTH);
 
         agregarPiezaFrame.setVisible(true);
     }
+
 
     private void mostrarEliminarPieza() {
         String titulo = JOptionPane.showInputDialog("Ingrese el título de la pieza que desea eliminar:");

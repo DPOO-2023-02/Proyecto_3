@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SistemaLoginGUI extends JFrame {
-    private static final long serialVersionUID = 1L; // Agregar serialVersionUID
+    private static final long serialVersionUID = 1L;
     private static final String ARCHIVO_USUARIOS = "usuarios.txt";
     private Map<String, String[]> usuarios = new HashMap<>();
     private PresentacionAdministrador presentacionAdministrador;

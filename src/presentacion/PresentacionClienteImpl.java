@@ -23,6 +23,9 @@ public class PresentacionClienteImpl implements PresentacionCliente {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setLayout(new GridLayout(6, 1));
+        
+        JLabel titleLabel = new JLabel("=== MENÚ CLIENTE ===", SwingConstants.CENTER);
+        frame.add(titleLabel);
 
         JButton btnVerMenuCompra = new JButton("Ver el menú de compra");
         JButton btnConsultarSaldo = new JButton("Consultar saldo");
