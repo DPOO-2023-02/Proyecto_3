@@ -1,10 +1,13 @@
 pruebas,123,comprador,10000.0
+japo,1978,administrador,100
+juanito,123,administrador,100.0
+julio,123,empleado,123
+Manuel,123456,administrador,60606
+peperepe,123,administrador,100
 Galería Moderna,123,comprador,100.0
 123,123,administrador,80000
 Galeria,123,comprador,123.0
 456,456,cliente,4000000
 andresito,123,comprador,10000.0
 santiago,123,administrador,123123.0
-juanito,123,administrador,100.0
-Manuel,123456,administrador,60606
-peperepe,123,administrador,100
+juanitoloco,123,administrador,100.0
