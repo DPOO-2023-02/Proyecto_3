@@ -43,7 +43,7 @@ public class PresentacionAdministradorImpl implements PresentacionAdministrador 
 
         backButton.addActionListener(e -> {
             adminFrame.dispose();
-            new SistemaLoginGUI(new PresentacionAdministradorImpl()).setVisible(true);
+            new SistemaLoginGUI(new PresentacionAdministradorImpl(), new PresentacionClienteImpl()).setVisible(true);
         });
 
         adminFrame.add(addButton);
