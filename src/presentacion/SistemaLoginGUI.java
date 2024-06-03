@@ -34,7 +34,7 @@ public class SistemaLoginGUI extends JFrame {
 
         // Panel para la imagen en el centro
         JLabel imageLabel = new JLabel();
-        URL imageUrl = getClass().getClassLoader().getResource("imagenes/subasta.png");
+        URL imageUrl = getClass().getClassLoader().getResource("/subasta.png");
         if (imageUrl != null) {
             ImageIcon icon = new ImageIcon(imageUrl);
             imageLabel.setIcon(icon);

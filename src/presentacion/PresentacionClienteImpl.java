@@ -1,6 +1,7 @@
 package presentacion;
 
 import interfaces.PresentacionCliente;
+import interfaces.PresentacionPago;
 import usuarios.Cliente;
 
 import javax.swing.*;
@@ -13,7 +14,7 @@ public class PresentacionClienteImpl implements PresentacionCliente {
     private JFrame frame;
 
     public PresentacionClienteImpl() {
-        this.cliente = new Cliente("nombre", "contrasenia", 1000); // Instancia creada aquí
+        this.cliente = new Cliente("nombre", "contrasenia", 1000); 
         initComponents();
     }
 
@@ -22,8 +23,8 @@ public class PresentacionClienteImpl implements PresentacionCliente {
         frame.setSize(400, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
-        frame.setLayout(new GridLayout(6, 1));
-        
+        frame.setLayout(new GridLayout(7, 1));
+
         JLabel titleLabel = new JLabel("=== MENÚ CLIENTE ===", SwingConstants.CENTER);
         frame.add(titleLabel);
 
@@ -32,14 +33,16 @@ public class PresentacionClienteImpl implements PresentacionCliente {
         JButton btnAgregarFondos = new JButton("Agregar fondos");
         JButton btnMisPiezas = new JButton("Mis Piezas");
         JButton btnHistorialCompras = new JButton("Ver Historial de Compras");
+        JButton btnTipoPago = new JButton("Tipo de Pago"); 
         JButton btnVolver = new JButton("Volver al menú principal");
+        
 
-//        btnVerMenuCompra.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                MainVenta.main(); // Assuming MainVenta is properly adjusted for GUI
-//            }
-//        });
+        btnVerMenuCompra.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // MainVenta.main(); 
+            }
+        });
 
         btnConsultarSaldo.addActionListener(new ActionListener() {
             @Override
@@ -67,7 +70,7 @@ public class PresentacionClienteImpl implements PresentacionCliente {
         btnMisPiezas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cliente.verMisPiezas(); // Adjust this method to show in GUI
+                cliente.verMisPiezas(); 
             }
         });
 
@@ -86,11 +89,20 @@ public class PresentacionClienteImpl implements PresentacionCliente {
             }
         });
 
+        btnTipoPago.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PresentacionPago presentacionPago = new PresentacionPagoImpl();
+                presentacionPago.mostrar(); 
+            }
+        });
+
         frame.add(btnVerMenuCompra);
         frame.add(btnConsultarSaldo);
         frame.add(btnAgregarFondos);
         frame.add(btnMisPiezas);
         frame.add(btnHistorialCompras);
+        frame.add(btnTipoPago);
         frame.add(btnVolver);
     }
 

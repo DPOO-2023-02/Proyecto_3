@@ -115,7 +115,8 @@ public class PresentacionAdministradorImpl implements PresentacionAdministrador 
         agregarPiezaFrame.add(titleLabel, BorderLayout.NORTH);
 
         JPanel formPanel = new JPanel(new GridLayout(11, 2, 5, 5));
-        
+        formPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
         formPanel.add(new JLabel("Título:"));
         JTextField tituloField = new JTextField();
         formPanel.add(tituloField);
@@ -185,7 +186,6 @@ public class PresentacionAdministradorImpl implements PresentacionAdministrador 
         agregarPiezaFrame.setVisible(true);
     }
 
-
     private void mostrarFormularioAgregarEscultura() {
         JFrame agregarPiezaFrame = new JFrame("Agregar Escultura");
         agregarPiezaFrame.setSize(400, 500);
@@ -195,8 +195,9 @@ public class PresentacionAdministradorImpl implements PresentacionAdministrador 
         JLabel titleLabel = new JLabel("== ESCULTURA ==", SwingConstants.CENTER);
         agregarPiezaFrame.add(titleLabel, BorderLayout.NORTH);
 
-        JPanel formPanel = new JPanel(new GridLayout(12, 2, 5, 5));
-        
+        JPanel formPanel = new JPanel(new GridLayout(13, 2, 5, 5)); // 13 filas para el título
+        formPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
         formPanel.add(new JLabel("Título:"));
         JTextField tituloField = new JTextField();
         formPanel.add(tituloField);
@@ -287,7 +288,8 @@ public class PresentacionAdministradorImpl implements PresentacionAdministrador 
         agregarPiezaFrame.add(titleLabel, BorderLayout.NORTH);
 
         JPanel formPanel = new JPanel(new GridLayout(12, 2, 5, 5));
-        
+        formPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
         formPanel.add(new JLabel("Título:"));
         JTextField tituloField = new JTextField();
         formPanel.add(tituloField);
@@ -363,6 +365,7 @@ public class PresentacionAdministradorImpl implements PresentacionAdministrador 
     }
 
 
+
     private void mostrarFormularioAgregarFotografia() {
         JFrame agregarPiezaFrame = new JFrame("Agregar Fotografía");
         agregarPiezaFrame.setSize(400, 500);
@@ -373,7 +376,8 @@ public class PresentacionAdministradorImpl implements PresentacionAdministrador 
         agregarPiezaFrame.add(titleLabel, BorderLayout.NORTH);
 
         JPanel formPanel = new JPanel(new GridLayout(12, 2, 5, 5));
-        
+        formPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
         formPanel.add(new JLabel("Título:"));
         JTextField tituloField = new JTextField();
         formPanel.add(tituloField);
@@ -449,6 +453,7 @@ public class PresentacionAdministradorImpl implements PresentacionAdministrador 
     }
 
 
+
     private void mostrarFormularioAgregarImpresion() {
         JFrame agregarPiezaFrame = new JFrame("Agregar Impresión");
         agregarPiezaFrame.setSize(400, 500);
@@ -459,7 +464,8 @@ public class PresentacionAdministradorImpl implements PresentacionAdministrador 
         agregarPiezaFrame.add(titleLabel, BorderLayout.NORTH);
 
         JPanel formPanel = new JPanel(new GridLayout(12, 2, 5, 5));
-        
+        formPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
         formPanel.add(new JLabel("Título:"));
         JTextField tituloField = new JTextField();
         formPanel.add(tituloField);
@@ -533,6 +539,7 @@ public class PresentacionAdministradorImpl implements PresentacionAdministrador 
 
         agregarPiezaFrame.setVisible(true);
     }
+
 
 
     private void mostrarEliminarPieza() {
