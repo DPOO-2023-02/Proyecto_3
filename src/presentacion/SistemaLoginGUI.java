@@ -1,7 +1,6 @@
 package presentacion;
 
 import javax.swing.*;
-
 import interfaces.PresentacionAdministrador;
 import interfaces.PresentacionCliente;
 import java.awt.*;
@@ -102,7 +101,7 @@ public class SistemaLoginGUI extends JFrame {
                 if (usuarios.containsKey(usuario) && usuarios.get(usuario)[0].equals(contraseña)) {
                     String tipoUsuario = usuarios.get(usuario)[1];
                     if ("cliente".equals(tipoUsuario)) {
-                        new PresentacionClienteImpl().iniciarSesionCliente();
+                        presentacionCliente.iniciarSesionCliente();
                     } else if ("administrador".equals(tipoUsuario)) {
                         presentacionAdministrador.iniciarSesion(tipoUsuario);
                     } else {
