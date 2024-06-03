@@ -39,7 +39,7 @@ public class SistemaLoginGUI extends JFrame {
             ImageIcon icon = new ImageIcon(imageUrl);
             imageLabel.setIcon(icon);
         } else {
-            imageLabel.setText("Imagen no encontrada");
+            imageLabel.setText("BIENVENIDO A LA SUBASTA");
         }
         add(imageLabel, BorderLayout.CENTER);
 
