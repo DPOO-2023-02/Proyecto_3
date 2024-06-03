@@ -3,6 +3,7 @@ package presentacion;
 import javax.swing.*;
 
 import interfaces.PresentacionAdministrador;
+import interfaces.PresentacionCliente;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,9 +17,11 @@ public class SistemaLoginGUI extends JFrame {
     private static final String ARCHIVO_USUARIOS = "usuarios.txt";
     private Map<String, String[]> usuarios = new HashMap<>();
     private PresentacionAdministrador presentacionAdministrador;
+    private PresentacionCliente presentacionCliente;
 
-    public SistemaLoginGUI(PresentacionAdministrador presentacionAdministrador) {
+    public SistemaLoginGUI(PresentacionAdministrador presentacionAdministrador, PresentacionCliente presentacionCliente) {
         this.presentacionAdministrador = presentacionAdministrador;
+        this.presentacionCliente = presentacionCliente;
         cargarUsuarios();
         initComponents();
     }
@@ -98,7 +101,13 @@ public class SistemaLoginGUI extends JFrame {
 
                 if (usuarios.containsKey(usuario) && usuarios.get(usuario)[0].equals(contraseña)) {
                     String tipoUsuario = usuarios.get(usuario)[1];
-                    presentacionAdministrador.iniciarSesion(tipoUsuario);
+                    if ("cliente".equals(tipoUsuario)) {
+                        new PresentacionClienteImpl().iniciarSesionCliente();
+                    } else if ("administrador".equals(tipoUsuario)) {
+                        presentacionAdministrador.iniciarSesion(tipoUsuario);
+                    } else {
+                        JOptionPane.showMessageDialog(loginFrame, "Tipo de usuario no reconocido", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                     loginFrame.dispose();
                 } else {
                     JOptionPane.showMessageDialog(loginFrame, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
@@ -197,6 +206,7 @@ public class SistemaLoginGUI extends JFrame {
 
     public static void main(String[] args) {
         PresentacionAdministrador presentacionAdministrador = new PresentacionAdministradorImpl();
-        SwingUtilities.invokeLater(() -> new SistemaLoginGUI(presentacionAdministrador).setVisible(true));
+        PresentacionCliente presentacionCliente = new PresentacionClienteImpl();
+        SwingUtilities.invokeLater(() -> new SistemaLoginGUI(presentacionAdministrador, presentacionCliente).setVisible(true));
     }
 }
